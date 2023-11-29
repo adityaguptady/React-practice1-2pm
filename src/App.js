@@ -2,12 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 
+//changes made by narayan
+
+
+
 // class App extends React.Component
 // {
 //   state = {counter: 0}
 // incrementCounter = () =>
 // {
-// this.setState({counter:parseInt(this.state.counter)+1})
+// this.setState({counter:parseInt(this.state.counter)+1})s
 // }
 
 // static getDerivedStateFromProps()
