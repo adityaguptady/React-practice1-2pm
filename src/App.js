@@ -36,11 +36,28 @@ import React from 'react';
 
 // }
 
+//Child component
+class InnerComponent extends React.Component
+{
+
+  componentWillUnmount()
+  {
+    console.log("InnerComponent: componentWillUnmount")
+  }
+
+  render()
+  {
+    console.log("child component render method")
+    return (<div>This is inner/child component</div>)
+  }
+}
+
 //Class component
+//Parent component
 class App extends React.Component
 {
   //declaring the state
-  state = {count: 0}
+  state = {count: 0, childComponent:<InnerComponent/>}
   //setCount
   //setAditya
 
@@ -79,10 +96,17 @@ class App extends React.Component
     console.log(this.state.count)
   }
 
+  removeChild = () =>
+  {
+    this.setState({childComponent: "Child is removed!!"})
+  }
+
   render()
   {
     console.log("--------------------Rendered the UI--------------------")
     return <div>
+      -----------Parent Component-----------
+      <br/><br/>
       Hello Functional component
       <div>
         Prop 1: {this.props.color}
@@ -94,8 +118,14 @@ class App extends React.Component
       <div>
         State: {this.state.count}
         <br/>
-        <button onClick={()=>this.updateCount()}>Increment count</button>
-      </div>
+        <button onClick={()=>this.updateCount()}>Increment count</button><br/><br/>
+        -----------Child Component-----------<br/><br/>
+        {/* <InnerComponent/> */}
+        {this.state.childComponent}
+        -----------Child Component-----------<br/><br/>
+        <button onClick={this.removeChild}>Remove Child</button>
+      </div><br/><br/>
+      -----------Parent Component-----------
     </div>
   }
 
